@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+  {% block content %}
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename = 'css/progbar.css') }}" />
+
+<body id="page-top">
+
+  <!-- About Section -->
+  <section class="page-section bg-primary" id="about">
+    <div class="container">
+      <div class="row">
+        <!-- justify-content-center for row  -->
+          <div class="left">
+            <h4><strong> Please select one domain: </strong></h4>
+            <div class="radio-toolbar">
+              <input type="radio" id="medDomain" name="domain" value="medical" checked="checked">
+              <label for="medDomain">Medical</label>
+              <input type="radio" id="fDomain" name="domain" value="flight">
+              <label for="fDomain">Flight Booking</label>
+            </div>
+            <br>
+            <h4><strong> Please select the level of complexity of conversation: </strong></h4>
+            <!-- Basic -->
+            <div class="checkbox-toolbar">
+                <input type="checkbox" id="basic" name="level" value="basic" />
+                <label for="basic">Basic</label>
+                <input type="checkbox" id="medium" name="level" value="medium" />
+                <label for="medium">Medium</label>
+                <input type="checkbox" id="complex" name="level" value="complex" />
+                <label for="complex">Complex</label>
+            </div>
+          </div>
+
+          <div class="right">
+            <h4><strong>More details on level of complexity:</strong></h4>
+            <p>Basic -> for basic level of complexity, the conversation length between user and the bot is short and has basic questions.</p>
+            <p>Medium -> for medium level of complexity, the conversation is usually longer and has more question.</p>
+            <p>Complex -> for the complex level, more question will be send to the chatbot and more fatal spelling mistakes</p>
+        </div>
+
+        <div class="col-lg-12">
+        <br>
+        <center><button type="button" class="btn btn-light btn-xl" id="evaluation">Evaluate</button></center>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Section -->
+  <section class="page-section1" id="chatbots">
+    <div class="container">
+	     <div style="background-color:#f4623a;text-align:center;width: 1200px; height: 50px">
+         <h2 style ="color:white" class="text-center mt-0">Evaluation Result</h2>
+	     </div>
+      <hr class="divider my-4">
+      <div class="row">
+
+        <!-- Amazon Lex Box -->
+        <div class="col-md-6 text-center">
+          <div class="mt-5">
+            <img src="{{ url_for ('static', filename = 'media/amazon.png') }}" alt="Amazon Lex" width="150" height="150">
+          </div>
+            <center><div class="chat-container-1" id="lex" style="width: 400px; height: 320px; border: 1px solid #ccc; background-color: #eee; padding: 4px; overflow: scroll"></div></center>
+        </div>
+
+        <!-- Google Dialogflow Box -->
+        <div class="col-md-6 text-center">
+          <div class="mt-5">
+            <img src="{{ url_for ('static', filename = 'media/dialog.png') }}" alt="IBM Watson" width="400" height="150">
+          </div>
+            <center><div class="chat-container-2" id="dialog" style="width: 400px; height: 320px; border: 1px solid #ccc; background-color: #eee; padding: 4px; overflow: scroll"></div></center>
+        </div>
+        <!-- Progress Bar -->
+        <div id="bar" class="col-lg-12">
+          <div id="progressBar" class="w3-light-grey w3-round-large">
+            <div id="myBar" class="w3-container w3-blue w3-round-large"></div>
+          </div>
+          <br>
+          <!-- Metric Button -->
+          <center><button type="button" id="metrics" class="btn btn-light btn-xl" style="display: none;">Generate Metrics</button></center>
+          <center><button type="button" id="resetEval" class="btn btn-light btn-xl" style="display: none">Reset Evaluation</button></center>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section1">
+    <div class="col-lg-12">
+      <center><table id="mTable">
+        <tr class= "metricType" style="display: none;">
+          <td></td>
+          <td>Fall Back Rate</td>
+          <td>Comprehensive Rate </td>
+          <td>General Accuracy</td>
+          <td>Precision</td>
+          <td>Recall</td>
+          <td>F1Score</td>
+          <td>Response Time</td>
+        </tr>
+        <tr class="lexMedicEasy" style="display: none;">
+          <td>LBasicMed</td>
+          <td id="lexmedicEasyFBR" class="eval"></td>
+          <td id="lexmedicEasyCpmRate" class="eval"></td>
+          <td id="lexmedicEasyPre" class="eval"></td>
+          <td id="lexmedicEasyRec" class="eval"></td>
+          <td id="lexmedicEasyGen" class="eval"></td>
+          <td id="lexmedicEasyF1" class="eval"></td>
+          <td id="lexmedicEasyRT" >93.6 ms</td>
+        </tr>
+        <tr class="lexMedicMedium" style="display: none;">
+          <td >LMediumMed</td>
+          <td id="lexmedicMediumFBR" class="eval"></td>
+          <td id="lexmedicMediumCpmRate" class="eval"></td>
+          <td id="lexmedicMediumPre" class="eval"></td>
+          <td id="lexmedicMediumRec" class="eval"></td>
+          <td id="lexmedicMediumGen" class="eval"></td>
+          <td id="lexmedicMediumRT" >97 ms</td>
+        </tr>
+        <tr class="lexMedicComplex" style="display: none;">
+          <td>LComplexMed</td>
+          <td id="lexmedicComplexFBR" class="eval"></td>
+          <td id="lexmedicComplexCpmRate" class="eval"></td>
+          <td id="lexmedicComplexPre" class="eval"></td>
+          <td id="lexmedicComplexRec" class="eval"></td>
+          <td id="lexmedicComplexGen" class="eval"></td>
+          <td id="lexmedicComplexF1" class="eval"></td>
+          <td id="lexmedicComplexRT" >94.9 ms</td>
+        </tr>
+        <tr class="lexFlightEasy" style="display: none;">
+          <td>LBasicFli</td>
+          <td id="lexflightEasyFBR" class="eval"></td>
+          <td id="lexflightEasyCpmRate" class="eval"></td>
+          <td id="lexflightEasyPre" class="eval"></td>
+          <td id="lexflightEasyRec" class="eval"></td>
+          <td id="lexflightEasyGen" class="eval"></td>
+          <td id="lexflightEasyF1" class="eval"></td>
+          <td id="lexflightEasyRT" >92.3 ms</td>
+        </tr>
+        <tr class="lexFlightMedium" style="display: none;">
+          <td>LMediumFli</td>
+          <td id="lexflightMediumFBR" class="eval"></td>
+          <td id="lexflightMediumCpmRate" class="eval"></td>
+          <td id="lexflightMediumPre" class="eval"></td>
+          <td id="lexflightMediumRec" class="eval"></td>
+          <td id="lexflightMediumGen" class="eval"></td>
+          <td id="lexflightMediumF1" class="eval"></td>
+          <td id="lexflightMediumRT" >95.6 ms</td>
+        </tr>
+        <tr class="lexFlightComplex" style="display: none;">
+          <td>LComplexFli</td>
+          <td id="lexflightComplexFBR" class="eval"></td>
+          <td id="lexflightComplexCpmRate" class="eval"></td>
+          <td id="lexflightComplexPre" class="eval"></td>
+          <td id="lexflightComplexRec" class="eval"></td>
+          <td id="lexflightComplexGen" class="eval"></td>
+          <td id="lexflightComplexF1" class="eval"></td>
+          <td id="lexflightComplexRT" >96.1 ms</td>
+        </tr>
+        <tr class="diaMedicEasy" style="display: none;">
+          <td>DiaBasicMed</td>
+          <td id="diamedicEasyFBR" class="eval"></td>
+          <td id="diamedicEasyCpmRate" class="eval"> </td>
+          <td id="diamedicEasyPre" class="eval"></td>
+          <td id="diamedicEasyRec" class="eval"></td>
+          <td id="diamedicEasyGen" class="eval"></td>
+          <td id="diamedicEasyF1" class="eval"></td>
+          <td id="diamedicEasyRT" >467 ms</td>
+        </tr>
+        <tr class="diaMedicMedium" style="display: none;">
+          <td>DiaMediumMed</td>
+          <td id="diamedicMediumFBR" class="eval"></td>
+          <td id="diamedicMediumCpmRate" class="eval"> </td>
+          <td id="diamedicMediumPre" class="eval"></td>
+          <td id="diamedicMediumRec" class="eval"></td>
+          <td id="diamedicMediumGen" class="eval"></td>
+          <td id="diamedicMediumF1" class="eval"></td>
+          <td id="diamedicMediumRT" >400 ms</td>
+        </tr>
+        <tr class="diaMedicComplex" style="display: none;">
+          <td>DiaComplexMed</td>
+          <td id="diamedicComplexFBR" class="eval"></td>
+          <td id="diamedicComplexCpmRate" class="eval"> </td>
+          <td id="diamedicComplexPre" class="eval"></td>
+          <td id="diamedicComplexRec" class="eval"></td>
+          <td id="diamedicComplexGen" class="eval"></td>
+          <td id="diamedicComplexF1" class="eval"></td>
+          <td id="diamedicComplexRT" >433 ms</td>
+        </tr>
+        <tr class="diaFlightEasy" style="display: none;">
+          <td>DiaBasicFli</td>
+          <td id="diaflightEasyFBR" class="eval"></td>
+          <td id="diaflightEasyCpmRate" class="eval"> </td>
+          <td id="diaflightEasyPre" class="eval"></td>
+          <td id="diaflightEasyRec" class="eval"></td>
+          <td id="diaflightEasyGen" class="eval"></td>
+          <td id="diaflightEasyF1" class="eval"></td>
+          <td id="diaflightEasyRT" >410 ms</td>
+        </tr>
+        <tr class="diaFlightMedium" style="display: none;">
+          <td>DiaMediumFli</td>
+          <td id="diaflightMediumFBR" class="eval"></td>
+          <td id="diaflightMediumCpmRate" class="eval"> </td>
+          <td id="diaflightMediumPre" class="eval"></td>
+          <td id="diaflightMediumRec" class="eval"></td>
+          <td id="diaflightMediumGen" class="eval"></td>
+          <td id="diaflightMediumF1" class="eval"></td>
+          <td id="diaflightMediumRT" >438 ms</td>
+        </tr>
+        <tr class="diaFlightComplex" style="display: none;">
+          <td>DiaComplexFli</td>
+          <td id="diaflightComplexFBR" class="eval"></td>
+          <td id="diaflightComplexCpmRate" class="eval"> </td>
+          <td id="diaflightComplexPre" class="eval"></td>
+          <td id="diaflightComplexRec" class="eval"></td>
+          <td id="diaflightComplexGen" class="eval"></td>
+          <td id="diaflightComplexF1" class="eval"></td>
+          <td id="diaflightComplexRT">463 ms</td>
+        </tr>
+        <tr class="watsonMedicEasy" style="display: none;">
+          <td>WatsonBasicMed</td>
+          <td id="watsonmedicEasyFBR" >0.037</td>
+          <td id="watsonmedicEasyCpmRate" >0.6</td>
+          <td id="watsonmedicEasyPre" >0.92</td>
+          <td id="watsonmedicEasyRec" >0.96</td>
+          <td id="watsonmedicEasyGen" >0.9</td>
+          <td id="watsonmedicEasyF1" >0.94</td>
+          <td id="watsonmedicEasyRT" >263 ms</td>
+        </tr>
+        <tr class="watsonMedicMedium" style="display: none;">
+          <td>WatsonMediumMed</td>
+          <td id="watsonmedicMediumFBR" >0.035</td>
+          <td id="watsonmedicMediumCpmRate" >0.8</td>
+          <td id="watsonmedicMediumPre" >0.88</td>
+          <td id="watsonmedicMediumRec" >0.92</td>
+          <td id="watsonmedicMediumGen" >0.83</td>
+          <td id="watsonmedicMediumF1" >0.90</td>
+          <td id="watsonmedicMediumRT" >230 ms</td>
+        </tr>
+        <tr class="watsonMedicComplex" style="display: none;">
+          <td>WatsonComplexMed</td>
+          <td id="watsonmedicComplexFBR" >0.18</td>
+          <td id="watsonmedicComplexCpmRate" >0.6</td>
+          <td id="watsonmedicComplexPre" >0.68</td>
+          <td id="watsonmedicComplexRec" >1</td>
+          <td id="watsonmedicComplexGen" >0.7</td>
+          <td id="watsonmedicComplexF1" >0.81</td>
+          <td id="watsonmedicComplexRT" >220 ms</td>
+        </tr>
+        <tr class="watsonFlightEasy" style="display: none;">
+          <td>WatsonBasicFli</td>
+          <td id="watsonflightEasyFBR" >0</td>
+          <td id="watsonflightEasyCpmRate" >0.5</td>
+          <td id="watsonflightEasyPre" >0.95</td>
+          <td id="watsonflightEasyRec" >0.96</td>
+          <td id="watsonflightEasyGen" >0.92</td>
+          <td id="watsonflightEasyF1" >0.96</td>
+          <td id="watsonflightEasyRT" >200 ms</td>
+        </tr>
+        <tr class="watsonFlightMedium" style="display: none;">
+          <td>WatsonMediumFli</td>
+          <td id="watsonflightMediumFBR" >0</td>
+          <td id="watsonflightMediumCpmRate" >0.75</td>
+          <td id="watsonflightMediumPre" >0.78</td>
+          <td id="watsonflightMediumRec" >0.8</td>
+          <td id="watsonflightMediumGen" >0.90</td>
+          <td id="watsonflightMediumF1" >0.79</td>
+          <td id="watsonflightMediumRT" >212 ms</td>
+        </tr>
+        <tr class="watsonFlightComplex" style="display: none;">
+          <td>WatsonComplexFli</td>
+          <td id="watsonflightComplexFBR" >0.05</td>
+          <td id="watsonflightComplexCpmRate" >0.75</td>
+          <td id="watsonflightComplexPre" >0.73</td>
+          <td id="watsonflightComplexRec" >0.78</td>
+          <td id="watsonflightComplexGen" >0.89</td>
+          <td id="watsonflightComplexF1" >0.75</td>
+          <td id="watsonflightComplexRT" >232 ms</td>
+        </tr>
+
+      </table></center>
+      <br>
+      <div class="medgraph" style="display: none">
+      <center>
+      <img src="{{ url_for ('static', filename = 'img/MFBR.jpg') }}"  id="medfbrimg" width="450" height="300">
+      <img src="{{ url_for ('static', filename = 'img/MCompRate.jpg') }}"  id="medcompimg" width="450" height="300" >
+      <img src="{{ url_for ('static', filename = 'img/MF1Score.jpg') }}"  id="medf1img" width="450" height="300" ><br>
+      <img src="{{ url_for ('static', filename = 'img/MGeneralAcc.jpg') }}" id="medgenimg" width="450" height="300">
+      <img src="{{ url_for ('static', filename = 'img/MPrecision.jpg') }}"  id="medpreimg" width="450" height="300">
+      <img src="{{ url_for ('static', filename = 'img/MRecall.jpg') }}"  id="medrecimg" width="450" height="300"><br>
+      <img src="{{ url_for ('static', filename = 'img/MResponseTime.jpg') }}" id="medresponseimg" width="450" height="300">
+      </center>
+      </div>
+      <div class="fligraph" style="display: none">
+      <center>
+      <img src="{{ url_for ('static', filename = 'img/FFBR.jpg') }}"  id="flifbrimg" width="450" height="300">
+      <img src="{{ url_for ('static', filename = 'img/FCompRate.jpg') }}"  id="flicompimg" width="450" height="300">
+      <img src="{{ url_for ('static', filename = 'img/FF1Score.jpg') }}"  id="flif1img" width="450" height="300" ><br>
+      <img src="{{ url_for ('static', filename = 'img/FGeneralAcc.jpg') }}" id="fligenimg" width="450" height="300" >
+      <img src="{{ url_for ('static', filename = 'img/FPrecision.jpg') }}"  id="flipreimg" width="450" height="300" >
+      <img src="{{ url_for ('static', filename = 'img/FRecall.jpg') }}"  id="flirecimg" width="450" height="300"><br>
+      <img src="{{ url_for ('static', filename = 'img/FResponseTime.jpg') }}" id="fliresponseimg" width="450" height="300" >
+      </center>
+      <div>
+      </div>
+  </section>
+
+  <!-- Custom scripts for this template -->
+  <script src="{{ url_for('static', filename='script/evaluation.js')}}"></script>
+  <script src="{{ url_for('static', filename='script/creative.min.js')}}"></script>
+{% endblock content %}

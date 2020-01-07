@@ -1,0 +1,49 @@
+input#wisdom{
+			padding: 4px;
+			font-size: 20px;
+			width: 300px
+		}
+
+		input::placeholder {
+			color: #ccc;
+			font-style: italic;
+		}
+
+		p.userRequest {
+			margin: 4px;
+			font-size: 10px;
+			padding: 4px 10px 4px 10px;
+			border-radius: 4px;
+			min-width: 50%;
+			max-width: 85%;
+			float: left;
+			background-color: #7d7;
+			color:black;
+		}
+
+		p.lexResponse {
+			margin: 4px;
+			font-size: 10px;
+			padding: 4px 10px 4px 10px;
+			border-radius: 4px;
+			text-align: right;
+			min-width: 50%;
+			max-width: 85%;
+			float: right;
+			background-color: #bbf;
+			font-style: italic;
+			color:black;
+		}
+
+		p.lexError {
+			margin: 4px;
+			font-size: 10px;
+			padding: 4px 10px 4px 10px;
+			border-radius: 4px;
+			text-align: right;
+			min-width: 50%;
+			max-width: 85%;
+			float: right;
+			background-color: #f77;
+			color:black;
+		}

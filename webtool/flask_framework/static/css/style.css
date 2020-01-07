@@ -1,0 +1,62 @@
+#tidbit {
+    position:absolute;
+    bottom:0;
+    right:0;
+    width: 300px;
+}
+
+body,html {
+		height: 100%;
+}
+
+.chat-container {
+		width: 600px;
+    height: 320px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 4px;
+    overflow-y: scroll;
+    position: relative;
+    bottom: 0;
+}
+
+.chat-message {
+	padding: 6px;
+	border-radius: 3px;
+	margin-bottom: 3px;
+}
+
+.bot-message {
+/*		background: #bbf;
+		color: white;*/
+	margin: 4px;
+    font-size: 13px;
+    padding: 4px 10px 4px 10px;
+    border-radius: 4px;
+    text-align: right;
+    min-width: 50%;
+    max-width: 85%;
+    float: right;
+    background-color: #bbf;
+}
+
+.human-message {
+/*		background: #7d7;
+		color: white;
+		margin: 13px 1px;*/
+	margin: 4px;
+    font-size: 13px;
+    padding: 4px 10px 4px 10px;
+    border-radius: 4px;
+    min-width: 50%;
+    max-width: 85%;
+    float: left;
+    background-color: #7d7;
+}
+
+.input {
+	padding: 6px;
+	font-size: 15px;
+	width: 550px;
+	height: 50px;
+}

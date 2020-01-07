@@ -1,0 +1,183 @@
+id,questions,intentLex,intentDialog,T,M,F
+77,i want to check my health,healthCheck,NeedSymptoms,1,0,0
+171,"coughing,sneezing",healthCheck,Flu,1,0,0
+102,which doctor should i visit,GetSpecialist,Flu-Doctor,1,0,0
+147,Whet is Recomentation shou i forllow,GetRecommendation,Flu-Recommendation,1,1,0
+109,I want some burger,Error handling,Fallback,0,0,1
+124,Which medicin shoud i taek,GetMedicine,Fallback,1,1,0
+129,I have hurt my ankle during a football game,GetInjury,Sprain Ankle,1,0,0
+173,i want to examine my health,healthCheck,NeedSymptoms,1,0,0
+71,"joint pain and stifness, redness",healthCheck,Asthma,1,0,0
+177,which medcime shuld I taek?,GetMedicine,Asthma-Medication,1,1,0
+19,i am sick right now. i want to check my health,healthCheck,NeedSymptoms,1,0,0
+29,"pain in muscle, sleep disturbances",healthCheck,Musculoskeletal,1,0,0
+37,what can cause musculoskeletal?,GetCauseOfDisease,Musculoskeletal-Cause,1,0,0
+141,"hi, i am not feeling well, can you check my health?",healthCheck,NeedSymptoms,1,0,0
+62,"poor appetite, vomitting",healthCheck,Hepatitis,1,0,0
+113,what kind of medication can you recommend to me?,GetMedicine,Hepatitis-Medication,1,0,0
+165,"my brother wants to examine his health, can you help me?",healthCheck,NeedSymptoms,1,0,0
+116,"watry bowl, dehidration",healthCheck,Diarrhea,1,1,0
+8,what recommendation can you give me,GetRecommendation,Diarrhea-Recommendation,1,0,0
+156,"my head hurts, can you examine it?",healthCheck,NeedSymptoms,1,0,0
+99,"pain in the region of head, migraine",healthCheck,Headache,1,0,0
+73,"hello, how old are you bot?",Error handling,Fallback,0,0,1
+111,I want to check my health,healthCheck,NeedSymptoms,1,0,0
+50,"memory loss, confusion",healthCheck,Alzheime,1,0,0
+18,which specilst can help me ?,GetSpecialist,Alzheime-Doctor,1,1,0
+63,"i want to buy some movie tickets, can you give me the schedule?",Error handling,Fallback,0,0,1
+149,there is problem with my health and would like to examine it,healthCheck,needSymptoms,1,0,0
+14,"severe headache, eyes hurt",healthCheck,Migraine,1,0,0
+43,what medication should I take?,GetMedicine,Migraine-Medication,1,0,0
+32,my foot hurts after playing soccer today,GetInjury,Fracture Foot,1,0,0
+83,i want to check my health,healthCheck,NeedSymptoms,1,0,0
+52,"back pain, lowr abdmen pian",healthCheck,Kidney Stone,1,1,0
+152,any doctor to handle this disease?,GetSpecialist,Kidney Stone-Doctor,1,0,0
+137,can you give me some recommendion?,GetRecommendation,Kidney Stone-Recommendation,1,1,0
+86,how do I get infected?,GetCauseOfDisease,Kidney Stone-Cause,1,0,0
+151,I want to check my health pls,healthCheck,NeedSymptoms,1,0,0
+40,"backache, gradual loss of height",healthCheck,Osteoporosis,1,0,0
+33,what kind of medication should I consume?,GetMedicine,Osteoporosis-Medication,1,0,0
+17,where can I buy the meds,GetMedicationBuyingLocation,Fallback,1,0,0
+41,3002,GetMedicationBuyingLocation,Fallback,0,0,1
+92,i want to check my health,healthCheck,NeedSymptoms,1,0,0
+59,"watery bowel, dehydration",healthCheck,Diarrhea,1,0,0
+72,any doctor to handle this disease?,GetSpecialist,Diarrhea-Doctor,1,0,0
+146,is there any medicine for it?,GetMedicine,Diarrhea-Medication,1,0,0
+104,what cause this disease?,GetCauseOfDisease,Diarrhea-Cause,1,0,0
+57,i want to check my health,healthCheck,NeedSymptoms,1,0,0
+67,"numbness, tingling, tenderness",healthCheck,Neck Pain,1,0,0
+143,what medication should I take?,GetMedicine,Neck Pain-Medication,1,0,0
+34,what kind of dcto should I go to?,GetSpecialist,Neck Pain-Doctor,1,1,0
+3,"if possible, can you help me call a doctor?",Error handling,Fallback,0,0,1
+125,I would like to examine my health,healthCheck,NeedSymptoms,1,0,0
+169,"I have poor apette, abdomal pain, diarrha, vomitting",healthCheck,Hepatitis,1,1,0
+48,Should I be visiting any specialist for my condition?,GetSpecialist,Hepatitis-Doctor,1,0,0
+105,"Okay, what would be the recommended medications?",GetRecommendation,Hepatitis-Medication,1,0,0
+49,i want to examine my health,healthCheck,NeedSymptoms,1,0,0
+88,"frequent urination, increased thirst",healthCheck,Diabetes,1,0,0
+81,what cause this disease?,GetCauseOfDisease,Diabetes-Cause,1,0,0
+123,what specialist or doctor should I visit?,GetSpecialist,Diabetes-Doctor,1,0,0
+136,should I consume any medication?,GetMedicine,Diabetes-Medication,1,1,0
+12,any recommnedation you can give?,GetRecommendation,Diabetes-Recommendation,1,0,0
+168,I want to check my health,healthCheck,NeedSymptoms,1,0,0
+38,"memory loss, confsin",healthCheck,Alzheimer,1,1,0
+45,what is the cause of alzheimer?,GetCauseOfDisease,Alzheimer-Cause,1,0,0
+175,which suggestion can help cure my disease?,GetRecommendation,Alzheimer-Recommendation,1,0,0
+132,what kind of doctor handles this disease?,GetSpecialist,Alzheimer-Doctor,1,0,0
+180,"hello, how are you today bot?",Error handling,Fallback,0,0,1
+133,my brother is not fit right now,healthCheck,Fallback,1,0,0
+135,"fever, runny nose, sore throat",healthCheck,Flu,1,0,0
+118,what type of mdicatin shuold I taek?,GetMedicine,Flu-Medication,1,1,0
+46,how much medcaton should I take?,GetMedicationInstruction,Flu-Medication,1,1,0
+138,how did I get infected?,GetCauseOfDisease,Flu-Cause,1,0,0
+119,can you give me some rcommendaton?,GetRecommendation,Flu-Recommendation,1,1,0
+100,"where to buy the medicine, GetMedicationBuyingLocation",GetMedicationBuyingLocation,Fallback,1,0,0
+163,3003,GetMedicationBuyingLocation,Fallback,1,0,0
+145,I have an issue with my health and I would like to check it.,healthCheck,NeedSymptoms,1,0,0
+78,"I'm experiencing severe headache, and sensitive to lights",healthCheck,Kidney Stone,1,0,0
+1,What is the treatment for my current condition?,GetRecommendation,Kidney Stone-Cause,1,0,0
+121,Which specialist should I visit for my condition?,GetSpecialist,Kidney Stone-Doctor,1,0,0
+131,What would be the recommended medications?,GetMedication,Kidney Stone-Medication,1,0,0
+161,who should I contact to help my disease?,Error handling,Kidney Stone-Contact,1,0,0
+155,Where can I get the medication?,GetMedicationBuyingLocation,Fallback,1,0,0
+91,3002,GetMedicationBuyingLocation,Fallback,1,0,0
+139,I have an issue with my health and I would like to check it.,healthCheck,NeedSymptoms,1,0,0
+166,"I'm experiencing severe haedche, and senstiv to lights",healthCheck,Migraine,1,1,0
+101,What is the treatment for my current condition?,GetRecommendation,Migraine-Recommendation,1,0,0
+30,Which specialist should I visit for my condition?,GetSpecialist,Migraine-Doctor,1,0,0
+153,What would be the recommended medications?,GetMedication,Migraine-Medication,1,0,0
+66,do you have contact that can help me cure this disease?,Error handling,Migraine-Contact,1,0,0
+27,When is Australia's independence day?,Error handling,Fallback,0,0,1
+94,"backache, gradual loss of height, fractures of spine",healthCheck,Osteoporosis,1,0,0
+130,I would like to have some fries,Error handling,Fallback,0,0,1
+98,I would like to make a booking ,CheckingFlight,Flight Check,1,0,0
+178,I will be departing from Sydney. ,CheckingFlight,Flight Check,1,0,0
+127,I will be arriving at Melbourne.,CheckingFlight,Flight Check,1,0,0
+103,I want some burger,Error handling,Fallback,0,0,1
+20,I wnt to do a boking ,CheckingFlight,Flight Check,1,1,0
+110,I will be departing from Perth. ,CheckingFlight,Flight Check,1,0,0
+58,I will b arrivng at Sdney.,CheckingFlight,Flight Check,1,1,0
+23,what is python?,Error handling,Fallback,0,0,1
+159,I want to book a flight ,CheckingFlight,Flight Check,1,0,0
+134,I will be departing from Brisbane.,CheckingFlight,Flight Check,1,0,0
+82,I will be arriving at Melbourne.,CheckingFlight,Flight Check,1,0,0
+54,I want to sing,Error handling,Fallback,0,0,1
+79,I want to book a flight from Adelaide to Perth,CheckingFlight,Flight Check,1,0,0
+89,I want to book a flight from Melbourne to Perth,CheckingFlight,Flight Check,1,0,0
+167,I wat to buy a tickt,CheckingFlight,Flight Check,1,1,0
+4,Perth,CheckingFlight,Flight Check,1,0,0
+157,Brisbane,CheckingFlight,Flight Check,1,0,0
+13,Can I get a Macbook Pro?,Error handling,Fallback,0,0,1
+162,I want to buy a ticket,CheckingFlight,Flight Check,1,0,0
+64,Melbourne,CheckingFlight,Flight Check,1,0,0
+56,Sydny,CheckingFlight,Flight Check,1,1,0
+60,What is Apple?.,Error handling,Fallback,0,0,1
+96,I want to buy a ticket,CheckingFlight,Flight Check,1,0,0
+115,Adelaide,CheckingFlight,Flight Check,1,0,0
+5,Melbourne,CheckingFlight,Flight Check,1,0,0
+112,I want to eat something.,Error handling,Fallback,0,0,1
+150,I want to buy a ticket,CheckingFlight,Flight Check,1,0,0
+51,Melbourne,CheckingFlight,Flight Check,1,0,0
+75,Brisbane,CheckingFlight,Flight Check,1,0,0
+148,I want to go home.,Error handling,Fallback,0,0,1
+22,I would like to make a bookign ,CheckingFlight,Flight Check,0,1,0
+9,I will be departing form Sydney. ,CheckingFlight,Flight Check,0,1,0
+10,are you my mother?,Error handling,Fallback,0,0,1
+24,I want to buy a ticket,CheckingFlight,Flight Check,1,0,0
+26,I will be departing from Melbourne. ,CheckingFlight,Flight Check,1,0,0
+90,I will be arriving at Sydney.,CheckingFlight,Flight Check,1,0,0
+76,tomorrow,CheckingFlight,Flight Check,1,0,0
+93,no meal,CheckingFlight,Flight Check,1,0,0
+31,I would like to select business class. ,CheckingFlight,Flight Check,1,0,0
+69,What is dataset?,Error handling,Fallback,0,0,1
+53,I want to buy a ticket,CheckingFlight,Flight Check,1,0,0
+170,I will be departing from Adelaide. ,CheckingFlight,Flight Check,1,0,0
+108,I will be arriving at Sydney.,CheckingFlight,Flight Check,1,0,0
+160,tomorrow,CheckingFlight,Flight Check,1,0,0
+28,no meal,CheckingFlight,Flight Check,1,0,0
+11,I would like to select business class. ,CheckingFlight,Flight Check,1,0,0
+128,I want to swin.,Error handling,Fallback,0,0,1
+158,I would like to make a booking ,CheckingFlight,Flight Check,1,0,0
+6,I will be departing from Melbourne. ,CheckingFlight,Flight Check,1,0,0
+42,I will be arriving at Adelaide.,CheckingFlight,Flight Check,1,0,0
+142,tomorrow,CheckingFlight,Flight Check,1,0,0
+97,no meal,CheckingFlight,Flight Check,1,0,0
+114,"I would like to have an economy class seat, please.  ",CheckingFlight,Flight Check,1,0,0
+164,What is intent?,Error handling,Fallback,0,0,1
+85,I would like to make a booking ,CheckingFlight,Flight Check,1,0,0
+122,I will be departing from Perth. ,CheckingFlight,Flight Check,1,0,0
+179,I will be arriving at Adelaide.,CheckingFlight,Flight Check,1,0,0
+174,tomorrow,CheckingFlight,Flight Check,1,0,0
+61,no meal,CheckingFlight,Flight Check,1,0,0
+70,Is the city crazy or am I crazy?,Error handling,Fallback,0,0,1
+36,I woudl like to mkae a booking ,CheckingFlight,Flight Check,0,1,0
+87,I will be departing from Perth. ,CheckingFlight,Flight Check,1,0,0
+117,I will be arriving at Sydney.,CheckingFlight,Flight Check,1,0,0
+7,tomorrow,CheckingFlight,Flight Check,1,0,0
+140,no meal,CheckingFlight,Flight Check,1,0,0
+47,"I would like to have an first class seat, please.  ",CheckingFlight,Flight Check,1,0,0
+68,yes,ProcessBuyTicket,Flight Check - yes,1,0,0
+39,no need,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+44,a93842685,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+21,John Legend,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+25,Is the city crazy?,Error handling,Fallback,0,0,1
+74,I want but a tickey from Sydney to Perth on tomorrow with no meal and first class seat.,CheckingFlight,Flight Check,0,1,0
+16,yes,ProcessBuyTicket,Flight Check - yes,1,0,0
+2,no need,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+154,a9384287665,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+15,Christiano Ronaldo,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+126,I would like to make a booking ,CheckingFlight,Flight Check,1,0,0
+55,I will be departing from Perth to Brisbane. ,CheckingFlight,Flight Check,1,0,0
+106,next monday,CheckingFlight,Flight Check,1,0,0
+80,no meal,CheckingFlight,Flight Check,1,0,0
+107,"I would like to have an economy class seat, please.  ",CheckingFlight,Flight Check,1,0,0
+84,"no worries, thanks",ProcessBuyTicket,Flight Check - no,1,0,0
+172,where is Swinburne?,Error handling,Fallback,0,0,1
+65,I want bok a flight from Melbourne to Adelaide on tomorrow with no meal and first class seat.,CheckingFlight,Flight Check,0,1,0
+35,no need a93842685 Jack,ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+120,I love to code,Error handling,Fallback,0,0,1
+144,I want bok a flight from Perth to Sydney on tomorrow with no meal and first class seat.,CheckingFlight,Flight Check,0,1,0
+176,yes,ProcessBuyTicket,Flight Check - yes,1,0,0
+95,"no need, p3948934, Drake",ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+190,no need, ProcessBuyTicket,Flight Check - yes - buy,1,0,0
+191,A.I., ProcessBuyTicket,Fallback,1,0,0
